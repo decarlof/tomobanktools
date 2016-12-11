@@ -13,7 +13,7 @@ import dxchange
 
 if __name__ == '__main__':
     # Set tomobank id
-    tomobank_id = 'phantom_00001'
+    tomobank_id = 'phantom_00003'
 
     # Set path to the micro-CT data to reconstruct.
     fname = '/local/decarlo/conda/tomobank/phantoms/' + tomobank_id + '/' + tomobank_id + '.h5'
