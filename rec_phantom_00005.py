@@ -16,7 +16,7 @@ if __name__ == '__main__':
     tomobank_id = 'phantom_00005'
 
     # Set path to the micro-CT data to reconstruct.
-    fname = '/local/decarlo/conda/tomobank/phantoms/' + tomobank_id + '/' + tomobank_id + '.h5'
+    fname = '/local/decarlo/data/tomobank/phantoms/' + tomobank_id + '/' + tomobank_id + '.h5'
 
     # Select the sinogram range to reconstruct.
     start = 0
@@ -41,6 +41,6 @@ if __name__ == '__main__':
     rec = tomopy.circ_mask(rec, axis=0, ratio=0.95)
     
     # Write data as stack of TIFs.
-    fname='/local/decarlo/conda/tomobank/phantoms/' + tomobank_id + '/' + tomobank_id
+    fname='/local/decarlo/data/tomobank/phantoms/' + tomobank_id + '/' + tomobank_id
     dxchange.write_tiff_stack(rec, fname=fname)
 

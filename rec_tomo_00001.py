@@ -16,7 +16,7 @@ if __name__ == '__main__':
     tomobank_id = 'tomo_00001'
 
     # Set path to the micro-CT data to reconstruct.
-    fname = '/local/decarlo/conda/tomobank/datasets/' + tomobank_id + '/' + tomobank_id + '.h5'
+    fname = '/local/decarlo/data/tomobank/datasets/' + tomobank_id + '/' + tomobank_id + '.h5'
 
     # Select the sinogram range to reconstruct.
     start = 200
@@ -31,7 +31,7 @@ if __name__ == '__main__':
     # Set rotation center.
     rot_center = 1024
 
-    tomopy.minus_log(proj)
+    proj = tomopy.minus_log(proj)
 
     # Reconstruct object using Gridrec algorithm.
     rec = tomopy.recon(proj, theta, center=rot_center, algorithm='gridrec', nchunk=1)
@@ -40,6 +40,6 @@ if __name__ == '__main__':
     rec = tomopy.circ_mask(rec, axis=0, ratio=0.95)
 
     # Write data as stack of TIFs.
-    fname='/local/decarlo/conda/tomobank/datasets/' + tomobank_id + '/' + tomobank_id
+    fname='/local/decarlo/data/tomobank/datasets/' + tomobank_id + '/' + tomobank_id
     dxchange.write_tiff_stack(rec, fname=fname)
 
