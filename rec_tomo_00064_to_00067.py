@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-TomoPy example script to reconstruct tomo_00032 to tomo_00055 APS 2-BM 
+TomoPy example script to reconstruct tomo_00064 to tomo_00067
 """
 
 from __future__ import print_function
