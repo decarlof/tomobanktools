@@ -16,31 +16,35 @@ import dxfile.dxtomo as dx
 if __name__ == '__main__':
 
    
-    sample_name = 'somya'
-
     data_index = 686
     concentration = '20'
     sample_detector_distance = '60'
+    sample_name = 'somya_20_60'
 
-    #data_index = 689
-    #concentration = '30'
-    #sample_detector_distance = '60'
+    data_index = 689
+    concentration = '30'
+    sample_detector_distance = '60'
+    sample_name = 'somya_30_60'
     
-    #data_index = 692
-    #concentration = '30'
-    #sample_detector_distance = '25'
+    data_index = 692
+    concentration = '30'
+    sample_detector_distance = '25'
+    sample_name = 'somya_30_25'
+
+    data_index = 695
+    concentration = '20'
+    sample_detector_distance = '25'
+    sample_name = 'somya_20_25'
     
-    #data_index = 695
-    #concentration = '20'
-    #sample_detector_distance = '25'
+    data_index = 698
+    concentration = '10'
+    sample_detector_distance = '25'
+    sample_name = 'somya_10_25'
     
-    #data_index = 698
-    #concentration = '10'
-    #sample_detector_distance = '25'
-    
-    #data_index = 701
-    #concentration = '5'
-    #sample_detector_distance = '25'
+    data_index = 701
+    concentration = '5'
+    sample_detector_distance = '25'
+    sample_name = 'somya_5_25'
     
 
     attenuator_name = 'filter set in 2-BM-A'
@@ -95,10 +99,10 @@ if __name__ == '__main__':
     monochromator_energy_units = 'keV'
        
     # Set path to the micro-CT data to reconstruct.
-    fname_proj = '/local/decarlo/data/tomobank/datasets/working_on/' + sample_name + concentration + '_' +  sample_detector_distance + 'mm/' + 'proj_' + "{:04d}".format(data_index) + '.hdf'
-    fname_flat = '/local/decarlo/data/tomobank/datasets/working_on/' + sample_name + concentration + '_' +  sample_detector_distance + 'mm/' + 'proj_' + "{:04d}".format(data_index+1) + '.hdf'
-    fname_dark = '/local/decarlo/data/tomobank/datasets/working_on/' + sample_name + concentration + '_' +  sample_detector_distance + 'mm/' + 'proj_' + "{:04d}".format(data_index+2) + '.hdf'
-    fname = '/local/decarlo/data/tomobank/datasets/working_on/' + sample_name + '_' + concentration + '_' +  sample_detector_distance  + '.h5'
+    fname_proj = '/local/decarlo/data/tomobank/datasets/working_on/' + sample_name + '/' + 'proj_' + "{:04d}".format(data_index) + '.hdf'
+    fname_flat = '/local/decarlo/data/tomobank/datasets/working_on/' + sample_name + '/' + 'proj_' + "{:04d}".format(data_index+1) + '.hdf'
+    fname_dark = '/local/decarlo/data/tomobank/datasets/working_on/' + sample_name + '/' + 'proj_' + "{:04d}".format(data_index+2) + '.hdf'
+    fname = '/local/decarlo/data/tomobank/datasets/working_on/' + sample_name + '.h5'
 
     exchange_base = "exchange"
     proj_grp = '/'.join([exchange_base, 'data'])
