@@ -10,8 +10,28 @@ from __future__ import print_function
 import os
 import numpy as np
 
-
 def blur_error(exposure_time, readout_time, camera_size_x, angular_range, number_of_proj):
+    """
+    Calculate the blur error due to a rotary stage fly scan motion durng the exposure.
+
+    Parameters
+    ----------
+    exposure_time: float
+        Detector exposure time
+    readout_time : float
+        Detector read out time
+    camera_size_x : int
+        Detector X size
+    angular_range : float
+        Tomographic scan angular range
+    number_of_proj : int
+        Numember of projections
+
+    Returns
+    -------
+    float
+        Blur error in pixel. For good quality reconstruction this should be < 0.2 pixel.
+    """
 
     angular_step = angular_range/number_of_proj
     scan_time = number_of_proj * (exposure_time + readout_time)
@@ -37,6 +57,30 @@ def blur_error(exposure_time, readout_time, camera_size_x, angular_range, number
     return blur_error
 
 def set_acquisition(blur_error, exposure_time, readout_time, camera_size_x, angular_range, number_of_proj):
+
+    """
+    Calculate frame rate and rotation speed for a desired blur error t
+
+    Parameters
+    ----------
+    blur_error : float
+        Desired blur error. For good quality reconstruction this should be < 0.2 pixel.
+    exposure_time: float
+        Detector exposure time
+    readout_time : float
+        Detector read out time
+    camera_size_x : int
+        Detector X size
+    angular_range : float
+        Tomographic scan angular range
+    number_of_proj : int
+        Numember of projections
+
+    Returns
+    -------
+    float
+        frame_rate, rot_speed
+    """
 
     delta_blur  = np.arccos(((camera_size_x / 2.0) - blur_error) / (camera_size_x / 2.0)) * 180.0 / np.pi
     rot_speed = delta_blur  / exposure_time
