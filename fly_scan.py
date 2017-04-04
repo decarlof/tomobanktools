@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Check theta generation
+Functions useful for fly-scan
 """
 
 from __future__ import print_function
