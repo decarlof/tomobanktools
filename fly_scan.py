@@ -36,7 +36,7 @@ def blur_error(exposure_time, readout_time, camera_size_x, angular_range, number
     
     return blur_error
 
-def acquisition_set(blur_error, exposure_time, readout_time, camera_size_x, angular_range, number_of_proj):
+def set_acquisition(blur_error, exposure_time, readout_time, camera_size_x, angular_range, number_of_proj):
 
     delta_blur  = np.arccos(((camera_size_x / 2.0) - blur_error) / (camera_size_x / 2.0)) * 180.0 / np.pi
     rot_speed = delta_blur  / exposure_time
@@ -69,4 +69,4 @@ if __name__ == '__main__':
     blur_error = blur_error(exposure_time, readout_time, camera_size_x, angular_range, number_of_proj)
 
     blur_error = 0.00143736498376        # pixel
-    frame_rate, rot_speed = acquisition_set(blur_error, exposure_time, readout_time, camera_size_x, angular_range, number_of_proj)    
+    frame_rate, rot_speed = set_acquisition(blur_error, exposure_time, readout_time, camera_size_x, angular_range, number_of_proj)    
