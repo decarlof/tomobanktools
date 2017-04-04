@@ -105,12 +105,15 @@ def set_acquisition(blur_error, exposure_time, readout_time, camera_size_x, angu
 if __name__ == '__main__':
 
     exposure_time          = 0.4             # s
-    angular_range          = 180.0           # deg
-    readout_time           = 0.1             # s
+    readout_time           = 0.00            # s
     camera_size_x          = 2048            # pixel
+    angular_range          = 180.0           # deg
     number_of_proj         = 1500
 
     blur_error = blur_error(exposure_time, readout_time, camera_size_x, angular_range, number_of_proj)
 
     blur_error = 0.00143736498376        # pixel
-    frame_rate, rot_speed = set_acquisition(blur_error, exposure_time, readout_time, camera_size_x, angular_range, number_of_proj)    
+    #frame_rate, rot_speed = set_acquisition(blur_error, exposure_time, readout_time, camera_size_x, angular_range, number_of_proj)
+    
+    
+    
