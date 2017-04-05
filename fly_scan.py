@@ -55,7 +55,7 @@ def blur_error(exposure_time, readout_time, camera_size_x, angular_range, number
     #print("Blur: ", blur_pixel, "pixels")
     #print("*************************************")
     
-    return blur_pixel
+    return blur_pixel, rot_speed, scan_time
 
 def set_acquisition(blur_error, exposure_time, readout_time, camera_size_x, angular_range, number_of_proj):
 
@@ -105,25 +105,36 @@ def set_acquisition(blur_error, exposure_time, readout_time, camera_size_x, angu
 
 if __name__ == '__main__':
 
-    exposure_time          = 0.4             # s
-    readout_time           = 0.00            # s
+    exposure_time          = 0.01            # s
+    readout_time           = 0.0             # s
     camera_size_x          = 2048            # pixel
     angular_range          = 180.0           # deg
     number_of_proj         = 1500
 
     x = []    
-    y = []    
-    for number_of_proj in range(90, 2048, 256):
-        b_err = blur_error(exposure_time, readout_time, camera_size_x, angular_range, number_of_proj)
+    y = []
+    y1 = []  
+    y2 = []  
+
+    for number_of_proj in range(5120, 20480, 64):
+        b_err, rot_speed, scan_time = blur_error(exposure_time, readout_time, camera_size_x, angular_range, number_of_proj)
         x.append(number_of_proj)
         y.append(b_err)
+        y1.append(rot_speed)
+        y2.append(scan_time)
         print(number_of_proj, b_err)
         #print(number_of_proj)
         
         #x.append(number_of_proj)        
         #y.append(b_err)
         #plt.plot([x, y])
-    #x = np.arange(0, 5, 0.1);    #y = np.sin(x)    plt.plot(x, y)    #plt.gca().set_aspect('equal', adjustable='box')
+    #x = np.arange(0, 5, 0.1);
+    #y = np.sin(x)
+    plt.plot(x, y)
+    #plt.plot(x, y1)
+    #plt.plot(x, y2)
+
+    #plt.gca().set_aspect('equal', adjustable='box')
     
     plt.show()
 
