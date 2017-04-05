@@ -9,6 +9,7 @@ from __future__ import print_function
 
 import os
 import numpy as np
+import matplotlib.pyplot as plt
 
 def blur_error(exposure_time, readout_time, camera_size_x, angular_range, number_of_proj):
     """
@@ -40,21 +41,21 @@ def blur_error(exposure_time, readout_time, camera_size_x, angular_range, number
     blur_delta = exposure_time * rot_speed
     blur_pixel = (camera_size_x / 2.0) - ((camera_size_x / 2.0) * np.cos(blur_delta * np.pi /180.))
 
-    print("*************************************")
-    print("Total # of proj: ", number_of_proj)
-    print("Exposure Time: ", exposure_time, "s")
-    print("Readout Time: ", readout_time, "s")
-    print("Angular Range: ", angular_range, "degrees")
-    print("Camera X size: ", camera_size_x)
-    print("*************************************")
-    print("Angular Step: ", angular_step, "degrees")   
-    print("Scan Time: ", scan_time ,"s") 
-    print("Rot Speed: ", rot_speed, "degrees/s")
-    print("Frame Rate: ", frame_rate, "fps")
-    print("Blur: ", blur_pixel, "pixels")
-    print("*************************************")
+    #print("*************************************")
+    #print("Total # of proj: ", number_of_proj)
+    #print("Exposure Time: ", exposure_time, "s")
+    #print("Readout Time: ", readout_time, "s")
+    #print("Angular Range: ", angular_range, "degrees")
+    #print("Camera X size: ", camera_size_x)
+    #print("*************************************")
+    #print("Angular Step: ", angular_step, "degrees")   
+    #print("Scan Time: ", scan_time ,"s") 
+    #print("Rot Speed: ", rot_speed, "degrees/s")
+    #print("Frame Rate: ", frame_rate, "fps")
+    #print("Blur: ", blur_pixel, "pixels")
+    #print("*************************************")
     
-    return blur_error
+    return blur_pixel
 
 def set_acquisition(blur_error, exposure_time, readout_time, camera_size_x, angular_range, number_of_proj):
 
@@ -110,9 +111,23 @@ if __name__ == '__main__':
     angular_range          = 180.0           # deg
     number_of_proj         = 1500
 
-    blur_error = blur_error(exposure_time, readout_time, camera_size_x, angular_range, number_of_proj)
+    x = []    
+    y = []    
+    for number_of_proj in range(90, 2048, 256):
+        b_err = blur_error(exposure_time, readout_time, camera_size_x, angular_range, number_of_proj)
+        x.append(number_of_proj)
+        y.append(b_err)
+        print(number_of_proj, b_err)
+        #print(number_of_proj)
+        
+        #x.append(number_of_proj)        
+        #y.append(b_err)
+        #plt.plot([x, y])
+    #x = np.arange(0, 5, 0.1);    #y = np.sin(x)    plt.plot(x, y)    #plt.gca().set_aspect('equal', adjustable='box')
+    
+    plt.show()
 
-    blur_error = 0.00143736498376        # pixel
+    #blur_error = 0.00143736498376        # pixel
     #frame_rate, rot_speed = set_acquisition(blur_error, exposure_time, readout_time, camera_size_x, angular_range, number_of_proj)
     
     
