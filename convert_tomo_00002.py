@@ -62,7 +62,8 @@ if __name__ == '__main__':
     end = 204
 
     # Read the APS 2-BM raw data.
-    #proj, flat, dark = dxchange.read_anka_topotomo(fname, ind_tomo, ind_flat, ind_dark, sino=(start, end))    proj, flat, dark = dxchange.read_anka_topotomo(fname, ind_tomo, ind_flat, ind_dark)
+    #proj, flat, dark = dxchange.read_anka_topotomo(fname, ind_tomo, ind_flat, ind_dark, sino=(start, end))
+    proj, flat, dark = dxchange.read_anka_topotomo(fname, ind_tomo, ind_flat, ind_dark)
   
     # Set data collection angles as equally spaced between 0-180 degrees.
     theta = np.linspace(0, 180, proj.shape[0])
@@ -104,7 +105,7 @@ if __name__ == '__main__':
             f.add_entry(dx.Entry.data(theta={'value': theta, 'units':'degrees'}))
 
             f.add_entry(dx.Entry.acquisition(start_date={'value': start_date}))
-            f.add_entry(dx.Entry.acquisition(start_end={'value': start_end}))
+            f.add_entry(dx.Entry.acquisition(end_date={'value': end_date}))
 
             f.add_entry(dx.Entry.acquisition(rotation_start_angle={'value': start_angle, 'unit': start_angle_unit}))
             f.add_entry(dx.Entry.acquisition(rotation_end_angle={'value': end_angle, 'unit': end_angle_unit}))
