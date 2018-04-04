@@ -22,11 +22,11 @@ if __name__ == '__main__':
     fname = '/Users/decarlo/Desktop/data/scan_renamed_450projections_crop'
     
     # Set meta-data
-    experimenter_name='Emanuel Larsson'
+    experimenter_name='Imke Greving'
     experimenter_affiliation='Helmholtz-Zentrum Geesthacht'
-    experimenter_email='emanuel.larsson@hzg.de'
+    experimenter_email='Imke.Greving@hzg.de'
     experimenter_address = 'Hamburg branch at DESY, Notkestrasse 85, 22607 Hamburg'
-    experimenter_phone = '+494089985315'
+    experimenter_phone = '+494089985334'
 
     instrument_name='nanoCT'    
     instrument_comment = 'nano branch at P05' 
